@@ -13,10 +13,12 @@ function Navbar() {
       <div className="main-wrapper">
         <div className="main">
           <SiBandsintown size={33} />
-          <NavLink className="heading long main" to="/">
+          <NavLink className="heading long home" to="/">
             Tresensportmusik
           </NavLink>
-          <h1 className="heading short main">TSM</h1>
+          <NavLink className="heading short home" to="/">
+            TSM
+          </NavLink>
         </div>
 
         <IoMenu

@@ -40,6 +40,8 @@
 
   align-items: center;
   justify-content: space-between;
+  position: sticky;
+  top: 0;
 }
 
 .burger-menu {
@@ -50,9 +52,9 @@
   list-style: none;
   display: flex;
   flex-direction: column;
-
   gap: 25px;
   margin: 0;
+  align-items: center;
   white-space: nowrap;
   transition: max-height 0.2s ease-in-out;
 }
@@ -76,14 +78,14 @@ a.navbar-link,
   border-radius: 10px;
 }
 
-.active:not(.main) {
+.active:not(.home) {
   font-weight: bold;
 
   background-color: rgba(44, 38, 38, 0.068);
   box-shadow: 0 0 28px rgba(16, 0, 235, 0.462);
 }
 
-.navbar-link:hover:not(.active, .main) {
+.navbar-link:hover:not(.active, .home) {
   background-color: rgba(224, 224, 224, 0.155);
 }
 

@@ -1,0 +1,44 @@
+.Homepage-Heading {
+  font-family: "Gravitas One", cursive;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 38.2% 61.8%;
+  grid-template-areas: "image text";
+}
+
+.hero {
+  grid-area: image;
+  height: 100%;
+  width: 100%;
+  background-image: url("../assets/hero.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.text {
+  color: white;
+  grid-area: text;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 50px;
+  background-image: url("../assets/homepage_background.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+}
+
+span {
+  color: rgb(0, 140, 255);
+}
+
+/* Media Queries */
+@media (max-width: 600px) {
+  .content {
+    grid-template-columns: 100%;
+    grid-template-areas: "text";
+  }
+}
