@@ -1,16 +1,10 @@
 import React from "react";
 import AuftrittCard from "./AuftrittCard";
 import "./Auftritte.css";
-
-interface auftritt {
-  title: string;
-  location: string;
-  date: string;
-  description: string;
-}
+import { type Auftritt } from "../types"
 
 interface AuftritteProps {
-  auftritte: auftritt[];
+  auftritte: Auftritt[];
 }
 
 function Auftritte({ auftritte }: AuftritteProps) {

@@ -1,16 +1,21 @@
-import React from "react";
+
+import { useForm } from "react-hook-form"
 import Auftritte from "./Auftritte";
 import "./Vip.css";
+import { type Auftritt } from "../types"
 
-interface Auftritt {
-  title?: string;
-  location?: string;
-  date?: string;
-  description?: string;
+
+
+interface VipProps {
+  auftritte: Auftritt[]
+  safeData: (data: Auftritt) => void
 }
 
-export const Vip = ({ auftritte }) => {
-  const auftritt: Auftritt = {};
+
+
+
+export const Vip = ({ auftritte, safeData }: VipProps) => {
+  const { register, handleSubmit, reset } = useForm<Auftritt>();
 
   return (
     <div className="vip--container">
@@ -20,11 +25,11 @@ export const Vip = ({ auftritte }) => {
       </div>
       <div className="vip--formular">
         <h2>Auftritt anlegen</h2>
-        <form className="vip--form">
-          <input type="text" placeholder="Title" required />
-          <input type="text" placeholder="Location" required />
-          <input type="text" placeholder="date" required />
-          <input type="text" placeholder="description" required />
+        <form onSubmit={handleSubmit(data => { safeData(data); reset() })} className="vip--form">
+          <input {...register('title')} type="text" placeholder="Title" required />
+          <input {...register('location')} type="text" placeholder="Location" required />
+          <input {...register('date')} type="text" placeholder="date" required />
+          <input {...register('description')} type="text" placeholder="description" required />
           <button type="submit">speichern</button>
         </form>
       </div>
