@@ -1,0 +1,7 @@
+.auftritte--container {
+  display: flex;
+  align-items: center;
+  padding: 50px;
+
+  flex-direction: column;
+}

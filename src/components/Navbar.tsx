@@ -48,7 +48,7 @@ function Navbar() {
           </NavLink>
         </li>
         <li>
-          <NavLink to="/login" className={"navbar-link"}>
+          <NavLink to="/vip" className={"navbar-link"}>
             {" "}
             VIP
           </NavLink>

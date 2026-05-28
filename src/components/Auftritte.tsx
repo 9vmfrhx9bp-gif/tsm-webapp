@@ -1,9 +1,26 @@
-import React from 'react'
+import React from "react";
+import AuftrittCard from "./AuftrittCard";
+import "./Auftritte.css";
 
-function Auftritte() {
-    return (
-        <div>Auftritte</div>
-    )
+interface auftritt {
+  title: string;
+  location: string;
+  date: string;
+  description: string;
 }
 
-export default Auftritte
+interface AuftritteProps {
+  auftritte: auftritt[];
+}
+
+function Auftritte({ auftritte }: AuftritteProps) {
+  return (
+    <div className="auftritte--container">
+      {auftritte.map((auftritt, index) => (
+        <AuftrittCard key={index} auftritt={auftritt} />
+      ))}
+    </div>
+  );
+}
+
+export default Auftritte;
