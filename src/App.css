@@ -6,4 +6,14 @@
 .Container {
   width: 100vw;
   height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  grid-template-areas: "Navbar" "Main";
+}
+
+Navbar {
+  grid-area: Navbar;
+}
+Routes {
+  grid-area: Main;
 }
