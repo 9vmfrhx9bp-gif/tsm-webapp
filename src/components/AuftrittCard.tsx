@@ -9,13 +9,15 @@ interface AuftrittCardProps {
     location: string;
     description: string;
   };
+  id;
 }
 
 function AuftrittCard({
   auftritt: { title, date, location, description },
+  id,
 }: AuftrittCardProps) {
   return (
-    <div className="Card">
+    <div className="Card" key={id}>
       <div className="card--text">
         <p className="card--item title">{title}</p>
         <p className="card--item location">{location}</p>
