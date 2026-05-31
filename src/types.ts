@@ -4,3 +4,9 @@ export interface Auftritt {
     date: string,
     description: string
 }
+
+export interface Editable {
+    title: string,
+    edit: boolean
+
+}
