@@ -1,12 +1,20 @@
 import React from "react";
 import "./Buttons.css";
 
-interface ButtonProps {
+interface DeleteButtonProps {
   id: number;
+
   onDelete: (id: number) => void;
+
 }
 
-export const DeleteButton = ({ id, onDelete }: ButtonProps) => {
+interface EditButtonProps {
+  title: string;
+  onEdit: (title: string) => void;
+
+}
+
+export const DeleteButton = ({ id, onDelete }: DeleteButtonProps) => {
   return (
     <div>
       <button
@@ -20,12 +28,12 @@ export const DeleteButton = ({ id, onDelete }: ButtonProps) => {
   );
 };
 
-export const SettingsButton = () => {
-  const onChange = () => console.log("changed");
+export const SettingsButton = ({ title, onEdit }: EditButtonProps) => {
+
   return (
     <div>
       <button
-        onClick={onChange}
+        onClick={() => onEdit(title)}
         type="button"
         className="btn btn-outline-secondary"
       >

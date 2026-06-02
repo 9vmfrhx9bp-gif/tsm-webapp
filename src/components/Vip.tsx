@@ -1,18 +1,26 @@
 import { useForm } from "react-hook-form";
+import { useEffect } from "react";
 import Auftritte from "./Auftritte";
 import AuftrittCard from "./AuftrittCard";
 import { DeleteButton, SettingsButton } from "./Buttons";
 import "./Vip.css";
 import { type Auftritt } from "../types";
 
+
 interface VipProps {
   auftritte: Auftritt[];
   safeData: (data: Auftritt) => void;
   onDelete: (id: number) => void;
+  onEdit: (title: string) => void;
+  Default: Auftritt
 }
 
-export const Vip = ({ auftritte, safeData, onDelete }: VipProps) => {
-  const { register, handleSubmit, reset } = useForm<Auftritt>();
+export const Vip = ({ auftritte, safeData, onDelete, onEdit, Default }: VipProps) => {
+  const { register, handleSubmit, reset } = useForm<Auftritt>({ defaultValues: Default });
+  useEffect(() => { reset(Default) }, [Default, reset])
+
+
+
 
   return (
     <div className="vip--container">
@@ -33,7 +41,7 @@ export const Vip = ({ auftritte, safeData, onDelete }: VipProps) => {
                 </td>
                 <td>
                   <DeleteButton id={index} onDelete={onDelete} />
-                  <SettingsButton />
+                  <SettingsButton title={auftritt.title} onEdit={onEdit} />
                 </td>
               </tr>
             ))}
@@ -54,24 +62,28 @@ export const Vip = ({ auftritte, safeData, onDelete }: VipProps) => {
             type="text"
             placeholder="Title"
             required
+
           />
           <input
             {...register("location")}
             type="text"
             placeholder="Location"
             required
+
           />
           <input
             {...register("date")}
             type="text"
-            placeholder="date"
+            placeholder="Date"
             required
+
           />
           <input
             {...register("description")}
             type="text"
-            placeholder="description"
+            placeholder="Description"
             required
+
           />
           <button type="submit">speichern</button>
         </form>
