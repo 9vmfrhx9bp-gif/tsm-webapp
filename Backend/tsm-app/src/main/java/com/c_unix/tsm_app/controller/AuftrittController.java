@@ -16,6 +16,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/auftritte")
 @AllArgsConstructor
+@CrossOrigin(origins = "http://localhost:5173/")
 public class AuftrittController {
     private final AuftrittRepository auftrittRepository;
     private final AuftrittMapper auftrittMapper;

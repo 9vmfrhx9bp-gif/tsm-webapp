@@ -2,6 +2,13 @@ spring:
   application:
     name: tsm-app
   datasource:
-    url: jdbc:postgresql://100.105.121.25:8081/tsm_backend
+    url: jdbc:postgresql://server:8081/tsm_backend
     username: postgres
     password: ${database_password}
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    database: postgresql
+    show-sql: true
+

@@ -4,10 +4,11 @@ import Navbar from "./components/Navbar";
 import "bootstrap/dist/css/bootstrap.css";
 
 import { Routes, Route } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Vip } from "./components/Vip";
 import { type Auftritt, type Editable } from "./types";
 import Swal from 'sweetalert2'
+import axios from "axios";
 
 
 function App() {
@@ -17,6 +18,15 @@ function App() {
   const [auftritte, setAuftritt] = useState<Auftritt[]>([]);
   const [edit, setEdit] = useState<Editable>({ title: "", edit: false });
   const [defaultForm, setDefault] = useState<Auftritt>(Default)
+
+  useEffect(() => {
+    axios.get<Auftritt[]>('http://localhost:8080/auftritte')
+      .then((response) => {
+        setAuftritt(response.data);
+        console.log(response.data)
+      })
+
+  }, [])
 
   const handleSafeData = (newAuftritt: Auftritt) => {
     if (edit.title === newAuftritt.title && edit.edit) {
