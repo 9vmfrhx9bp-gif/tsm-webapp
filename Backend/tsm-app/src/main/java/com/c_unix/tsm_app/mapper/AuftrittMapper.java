@@ -7,4 +7,5 @@ import org.mapstruct.Mapper;
 @Mapper(componentModel = "spring")
 public interface AuftrittMapper {
     public AuftrittDto toDto(Auftritt auftritt);
+    public Auftritt toEntity(AuftrittDto dto);
 }

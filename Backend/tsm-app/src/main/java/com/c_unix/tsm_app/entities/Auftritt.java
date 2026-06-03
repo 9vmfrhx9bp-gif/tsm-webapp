@@ -11,6 +11,7 @@ public class Auftritt {
     @Id
     @Column(name="id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     Long id;
 
     @Column(name="title")
