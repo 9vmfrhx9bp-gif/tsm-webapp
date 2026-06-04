@@ -11,7 +11,7 @@ function Auftritte({ auftritte }: AuftritteProps) {
   return (
     <div className="auftritte--container">
       {auftritte.map((auftritt, index) => (
-        <AuftrittCard id={index} auftritt={auftritt} />
+        <AuftrittCard auftritt={auftritt} />
       ))}
     </div>
   );

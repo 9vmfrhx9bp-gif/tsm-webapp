@@ -5,13 +5,11 @@ interface DeleteButtonProps {
   id: number;
 
   onDelete: (id: number) => void;
-
 }
 
 interface EditButtonProps {
   title: string;
   onEdit: (title: string) => void;
-
 }
 
 export const DeleteButton = ({ id, onDelete }: DeleteButtonProps) => {
@@ -29,7 +27,6 @@ export const DeleteButton = ({ id, onDelete }: DeleteButtonProps) => {
 };
 
 export const SettingsButton = ({ title, onEdit }: EditButtonProps) => {
-
   return (
     <div>
       <button

@@ -6,6 +6,8 @@ import com.c_unix.tsm_app.entities.Auftritt;
 import com.c_unix.tsm_app.mapper.AuftrittMapper;
 import com.c_unix.tsm_app.repositories.AuftrittRepository;
 import lombok.AllArgsConstructor;
+import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -37,5 +39,21 @@ public class AuftrittController {
         var uri =  uriBuilder.path("/auftritte/{id}").buildAndExpand(response.getId()).toUri();
         return ResponseEntity.created(uri).body(response);
     }
+
+    @PutMapping
+    public ResponseEntity updateAuftritt(@RequestBody AuftrittDto auftrittDto){
+        var auftritt = auftrittMapper.toEntity(auftrittDto);
+        auftrittRepository.save(auftritt);
+        return ResponseEntity.ok().build();
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity deleteAuftritt(@PathVariable Long id){
+    Auftritt auftritt = auftrittRepository.findById(id).orElse(null);
+        auftrittRepository.delete(auftritt);
+        return ResponseEntity.noContent().build();
+    }
+
+
 
 }
