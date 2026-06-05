@@ -4,7 +4,7 @@ import Navbar from "./components/Navbar";
 import "bootstrap/dist/css/bootstrap.css";
 
 import { Routes, Route } from "react-router-dom";
-import { useState, useEffect, use } from "react";
+import { useState, useEffect } from "react";
 import { Vip } from "./components/Vip";
 import { type Auftritt, type Editable } from "./types";
 import Swal from "sweetalert2";
@@ -30,7 +30,6 @@ function App() {
         setAuftritt(response.data);
       });
   }, []);
-  console.log(auftritte);
 
   const handleSafeData = (newAuftritt: Auftritt) => {
     if (edit.title === newAuftritt.title && edit.edit) {
@@ -69,8 +68,8 @@ function App() {
     }
   };
 
-  const deleteData = (id: number) => {
-    const key = auftritte[id].id;
+  const deleteData = (index: number) => {
+    const key = auftritte[index].id;
     try {
       axios.delete("http://localhost:8080/auftritte/" + key);
     } catch (error) {
@@ -78,7 +77,7 @@ function App() {
     }
     setAuftritt(
       auftritte.filter((value) => {
-        return auftritte.indexOf(value) !== id;
+        return auftritte.indexOf(value) !== index;
       }),
     );
   };

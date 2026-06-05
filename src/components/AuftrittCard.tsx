@@ -1,22 +1,14 @@
-import React from "react";
 import "./AuftrittCard.css";
-import image from "../assets/hero.jpg";
+import { type Auftritt } from "../types";
 
 interface AuftrittCardProps {
-  auftritt: {
-    title: string;
-    date: string;
-    location: string;
-    description: string;
-  };
-  id: number;
-  key?: number;
+  auftritt: Auftritt;
+  key: number;
 }
 
 function AuftrittCard({
   auftritt: { title, date, location, description },
   key,
-  id,
 }: AuftrittCardProps) {
   return (
     <div className="Card" key={key}>

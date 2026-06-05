@@ -1,6 +1,5 @@
-import React from "react";
 import { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { SiBandsintown } from "react-icons/si";
 import { IoMenu } from "react-icons/io5";
 import "./Navbar.css";

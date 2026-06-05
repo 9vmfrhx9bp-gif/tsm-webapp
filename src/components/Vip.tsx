@@ -42,11 +42,7 @@ export const Vip = ({
             {auftritte.map((auftritt, index) => (
               <tr>
                 <td>
-                  <AuftrittCard
-                    auftritt={auftritt}
-                    id={index}
-                    key={auftritt.id}
-                  />
+                  <AuftrittCard auftritt={auftritt} key={auftritt.id} />
                 </td>
                 <td>
                   <DeleteButton id={index} onDelete={onDelete} />

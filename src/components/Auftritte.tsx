@@ -1,4 +1,3 @@
-import React from "react";
 import AuftrittCard from "./AuftrittCard";
 import "./Auftritte.css";
 import { type Auftritt } from "../types";
@@ -10,8 +9,8 @@ interface AuftritteProps {
 function Auftritte({ auftritte }: AuftritteProps) {
   return (
     <div className="auftritte--container">
-      {auftritte.map((auftritt, index) => (
-        <AuftrittCard auftritt={auftritt} />
+      {auftritte.map((auftritt) => (
+        <AuftrittCard key={auftritt.id} auftritt={auftritt} />
       ))}
     </div>
   );
