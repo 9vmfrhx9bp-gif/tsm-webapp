@@ -7,6 +7,7 @@
   height: auto;
   background-color: white;
   margin-bottom: 10px;
+  min-width: 200px;
 
   box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);
 }
@@ -16,8 +17,8 @@
   height: 100%;
   display: grid;
   grid-template-columns: 50% 50%;
-  grid-template-rows: 50% 25% 25%;
-  grid-template-areas: "title title" "location description" "date description";
+  grid-template-rows: 25% 25% 25% 25%;
+  grid-template-areas: "title title" "location description" "date description" "preis preis";
 }
 
 .card--item {
@@ -25,6 +26,7 @@
   margin: 0;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .card--image--content {
@@ -35,8 +37,9 @@
 
 .title {
   grid-area: title;
-  font-size: 1.2em;
+  font-size: 1.6em;
   font-weight: bold;
+  margin-bottom: 10px;
 }
 .location {
   grid-area: location;
@@ -52,4 +55,9 @@
   grid-area: description;
   font-size: 0.8em;
   overflow: scroll;
+}
+.preis {
+  grid-area: preis;
+  font-size: 1em;
+  font-weight: bold;
 }

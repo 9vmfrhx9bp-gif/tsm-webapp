@@ -3,6 +3,8 @@ package com.c_unix.tsm_app.entities;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.math.BigDecimal;
+
 @Entity
 @Data
 @Table(name="auftritte")
@@ -11,7 +13,6 @@ public class Auftritt {
     @Id
     @Column(name="id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     Long id;
 
     @Column(name="title")
@@ -26,4 +27,6 @@ public class Auftritt {
     @Column(name="description")
     String description;
 
+    @Column(name="preis")
+    BigDecimal preis;
 }

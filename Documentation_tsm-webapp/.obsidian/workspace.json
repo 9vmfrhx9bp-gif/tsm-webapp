@@ -129,8 +129,7 @@
               "title": "DeleteButton"
             }
           }
-        ],
-        "currentTab": 3
+        ]
       }
     ],
     "direction": "vertical"
@@ -204,6 +203,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "App.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -213,7 +213,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Rückverweise"
+              "title": "Rückverweise auf App"
             }
           },
           {
@@ -222,11 +222,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "App.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Ausgehende Links"
+              "title": "Ausgehende Links von App öffnen"
             }
           },
           {
@@ -264,12 +265,13 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "App.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Gliederung"
+              "title": "Gliederung von App"
             }
           }
         ]
@@ -290,14 +292,14 @@
       "bases:Neue Base erstellen": false
     }
   },
-  "active": "3fc60bef6e126d5b",
+  "active": "49fd2f596413868d",
   "lastOpenFiles": [
+    "Vip.md",
+    "Auftritt.md",
     "SettingsButton.md",
     "DeleteButton.md",
-    "Vip.md",
     "App.md",
     "Auftritte.md",
-    "Auftritt.md",
     "AuftrittCard.md",
     "NavBar.md",
     "Homepage.md",

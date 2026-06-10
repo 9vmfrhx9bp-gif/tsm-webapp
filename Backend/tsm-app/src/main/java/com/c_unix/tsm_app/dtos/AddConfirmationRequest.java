@@ -15,5 +15,5 @@ public class AddConfirmationRequest {
     String stadt;
     String email;
     String menge;
-    BigDecimal price;
+    BigDecimal preis;
 }

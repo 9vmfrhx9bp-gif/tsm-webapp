@@ -5,11 +5,11 @@ CSS = Vip.css
 
 # Import
 
-| Components         | Libraries | Hooks     | Types    |
-| ------------------ | --------- | --------- | -------- |
-| [[AuftrittCard]]   |           | useForm   | Auftritt |
-| [[DeleteButton]]   |           | useEffect |          |
-| [[SettingsButton]] |           |           |          |
+| Components         | Libraries | Hooks     | Types        |
+| ------------------ | --------- | --------- | ------------ |
+| [[AuftrittCard]]   |           | useForm   | [[Auftritt]] |
+| [[DeleteButton]]   |           | useEffect |              |
+| [[SettingsButton]] |           |           |              |
 
 # Interfaces
 *VipProps*

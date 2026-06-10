@@ -5,11 +5,10 @@ import lombok.Data;
 import java.math.BigDecimal;
 
 @Data
-public class AuftrittDto {
-    Long id;
+public class AddAuftrittRequest {
     String title;
-    String location;
     String date;
+    String location;
     String description;
     BigDecimal preis;
 }

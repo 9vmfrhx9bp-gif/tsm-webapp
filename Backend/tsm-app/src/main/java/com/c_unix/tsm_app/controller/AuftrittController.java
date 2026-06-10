@@ -1,6 +1,7 @@
 package com.c_unix.tsm_app.controller;
 
 
+import com.c_unix.tsm_app.dtos.AddAuftrittRequest;
 import com.c_unix.tsm_app.dtos.AuftrittDto;
 import com.c_unix.tsm_app.entities.Auftritt;
 import com.c_unix.tsm_app.mapper.AuftrittMapper;
@@ -32,8 +33,8 @@ public class AuftrittController {
     }
 
     @PostMapping
-    public ResponseEntity<AuftrittDto> creatAuftritt(@RequestBody AuftrittDto auftrittDto, UriComponentsBuilder uriBuilder){
-        Auftritt auftritt=auftrittMapper.toEntity(auftrittDto);
+    public ResponseEntity<AuftrittDto> creatAuftritt(@RequestBody AddAuftrittRequest request, UriComponentsBuilder uriBuilder){
+        Auftritt auftritt=auftrittMapper.auftrittRequestToEntity(request);
         auftrittRepository.save(auftritt);
         var response = auftrittMapper.toDto(auftritt);
         var uri =  uriBuilder.path("/auftritte/{id}").buildAndExpand(response.getId()).toUri();

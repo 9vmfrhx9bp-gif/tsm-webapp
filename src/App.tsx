@@ -1,12 +1,13 @@
 import Homepage from "./components/Homepage";
 import Auftritte from "./components/Auftritte";
 import Navbar from "./components/Navbar";
+import Buchen from "./components/Buchen";
 import "bootstrap/dist/css/bootstrap.css";
 
 import { Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Vip } from "./components/Vip";
-import { type Auftritt, type Editable } from "./types";
+import { type Auftritt, type Editable, type ConfirmationDto } from "./types";
 import Swal from "sweetalert2";
 import axios from "axios";
 
@@ -17,17 +18,24 @@ function App() {
     date: "",
     description: "",
     id: 0,
+    preis: 0,
   };
 
   const [auftritte, setAuftritt] = useState<Auftritt[]>([]);
   const [edit, setEdit] = useState<Editable>({ title: "", edit: false });
   const [defaultForm, setDefault] = useState<Auftritt>(Default);
+  const [confirmation, setConfirmation] = useState<ConfirmationDto[]>([]);
 
   useEffect(() => {
     axios
       .get<Auftritt[]>("http://localhost:8080/auftritte")
       .then((response) => {
         setAuftritt(response.data);
+      });
+    axios
+      .get<ConfirmationDto[]>("http://localhost:8080/confirmations")
+      .then((response) => {
+        setConfirmation(response.data);
       });
   }, []);
 
@@ -54,13 +62,11 @@ function App() {
       });
     }
 
-    setAuftritt([...auftritte, newAuftritt]);
-
     try {
       axios
         .post("http://localhost:8080/auftritte", newAuftritt)
         .then((request) => {
-          request.data = newAuftritt;
+          setAuftritt([...auftritte, request.data]);
           console.log(request.data);
         });
     } catch (error) {
@@ -100,6 +106,10 @@ function App() {
     return;
   };
 
+  const safeConfirmation = (data: ConfirmationDto) => {
+    setConfirmation([...confirmation, data]);
+  };
+
   return (
     <div className="Container">
       <Navbar />
@@ -120,6 +130,12 @@ function App() {
               onEdit={onEdit}
               Default={defaultForm}
             />
+          }
+        />
+        <Route
+          path="/buchen"
+          element={
+            <Buchen auftritte={auftritte} safeConfirmation={safeConfirmation} />
           }
         />
       </Routes>

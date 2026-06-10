@@ -8,6 +8,7 @@
 | [[NavBar]]    | Axios     | useEffect | [[Editable]] |
 | [[Auftritte]] | Router    |           |              |
 | [[Vip]]       | Bootstrap |           |              |
+| [[Buchen]]    |           |           |              |
 
 # Interfaces
 --

@@ -13,6 +13,6 @@ public class ConfirmationDto {
     int menge;
     String email;
     boolean status;
-    BigDecimal price;
+    BigDecimal preis;
 
 }

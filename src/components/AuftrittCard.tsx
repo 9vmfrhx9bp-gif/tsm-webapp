@@ -7,7 +7,7 @@ interface AuftrittCardProps {
 }
 
 function AuftrittCard({
-  auftritt: { title, date, location, description },
+  auftritt: { title, date, location, description, preis },
   key,
 }: AuftrittCardProps) {
   return (
@@ -17,6 +17,7 @@ function AuftrittCard({
         <p className="card--item location">{location}</p>
         <p className="card--item date">{date}</p>
         <p className="card--item description">{description}</p>
+        <p className="card--item preis">Preis pro Ticket: {preis}€</p>
       </div>
     </div>
   );

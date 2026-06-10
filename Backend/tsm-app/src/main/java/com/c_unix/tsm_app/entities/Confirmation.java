@@ -49,7 +49,7 @@ public class Confirmation {
     @Column(name="status")
     boolean status;
 
-    @Column(name="price")
-    BigDecimal price;
+    @Column(name="preis")
+    BigDecimal preis;
 
 }

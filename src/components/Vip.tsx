@@ -23,6 +23,7 @@ export const Vip = ({
   const { register, handleSubmit, reset } = useForm<Auftritt>({
     defaultValues: Default,
   });
+
   useEffect(() => {
     reset(Default);
   }, [Default, reset]);
@@ -35,6 +36,7 @@ export const Vip = ({
           <thead>
             <tr>
               <th scope="col">Auftritte</th>
+
               <th scope="col">Bearbeiten</th>
             </tr>
           </thead>
@@ -44,6 +46,7 @@ export const Vip = ({
                 <td>
                   <AuftrittCard auftritt={auftritt} key={auftritt.id} />
                 </td>
+
                 <td>
                   <DeleteButton id={index} onDelete={onDelete} />
                   <SettingsButton title={auftritt.title} onEdit={onEdit} />
@@ -84,6 +87,12 @@ export const Vip = ({
             {...register("description")}
             type="text"
             placeholder="Description"
+            required
+          />
+          <input
+            {...register("preis")}
+            type="number"
+            placeholder="Preis pro Ticket"
             required
           />
           <button type="submit">speichern</button>

@@ -31,11 +31,12 @@
   padding: 50px;
 }
 
-input {
+input,
+select {
   margin: 10px;
   width: 80%;
   height: 50px;
-  padding: 20px;
+  padding-left: 20px;
   border-radius: 10px;
   border-style: none;
   box-shadow: 0 0 14px rgba(0, 0, 0, 0.152);

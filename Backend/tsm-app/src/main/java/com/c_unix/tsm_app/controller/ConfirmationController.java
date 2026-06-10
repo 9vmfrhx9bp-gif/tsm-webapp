@@ -16,6 +16,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/confirmations")
 @AllArgsConstructor
+@CrossOrigin(origins = "http://localhost:5173/")
 public class ConfirmationController {
 
     private final ConfirmationMapper confirmationMapper;
@@ -32,7 +33,7 @@ public class ConfirmationController {
 
     @PostMapping
     public ResponseEntity<ConfirmationDto> addConfirmation(@RequestBody AddConfirmationRequest request, UriComponentsBuilder uriBuilder){
-        var confirmation = confirmationMapper.toEntity(request);
+        Confirmation confirmation = confirmationMapper.toEntity(request);
         confirmationRepository.save(confirmation);
         var response = confirmationMapper.toDto(confirmation);
         var uri = uriBuilder.path("/confirmations/{id}").buildAndExpand(response.getId()).toUri();
