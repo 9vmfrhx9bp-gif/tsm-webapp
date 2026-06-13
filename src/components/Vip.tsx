@@ -1,9 +1,10 @@
 import { useForm } from "react-hook-form";
 import { useEffect } from "react";
 import AuftrittCard from "./AuftrittCard";
+import Dashboard from "./Dashboard";
 import { DeleteButton, SettingsButton } from "./Buttons";
 import "./Vip.css";
-import { type Auftritt } from "../types";
+import { type Auftritt, type ConfirmationDto } from "../types";
 
 interface VipProps {
   auftritte: Auftritt[];
@@ -11,6 +12,7 @@ interface VipProps {
   onDelete: (id: number) => void;
   onEdit: (title: string) => void;
   Default: Auftritt;
+  confirmations: ConfirmationDto[];
 }
 
 export const Vip = ({
@@ -19,6 +21,7 @@ export const Vip = ({
   onDelete,
   onEdit,
   Default,
+  confirmations,
 }: VipProps) => {
   const { register, handleSubmit, reset } = useForm<Auftritt>({
     defaultValues: Default,
@@ -31,7 +34,6 @@ export const Vip = ({
   return (
     <div className="vip--container">
       <div className="vip--auftritte">
-        <h2 className="vip--heading--auftri"> Anstehende Auftritte</h2>
         <table className="table table-striped-columns">
           <thead>
             <tr>
@@ -57,7 +59,6 @@ export const Vip = ({
         </table>
       </div>
       <div className="vip--formular">
-        <h2>Auftritt anlegen</h2>
         <form
           onSubmit={handleSubmit((data) => {
             safeData(data);
@@ -97,6 +98,9 @@ export const Vip = ({
           />
           <button type="submit">speichern</button>
         </form>
+      </div>
+      <div className="vip--dashboard">
+        <Dashboard confirmations={confirmations} />
       </div>
     </div>
   );

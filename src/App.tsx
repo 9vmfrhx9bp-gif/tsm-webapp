@@ -129,6 +129,7 @@ function App() {
               safeData={handleSafeData}
               onEdit={onEdit}
               Default={defaultForm}
+              confirmations={confirmation}
             />
           }
         />

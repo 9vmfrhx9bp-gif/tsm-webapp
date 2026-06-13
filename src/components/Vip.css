@@ -1,11 +1,10 @@
 .vip--container {
   width: 100vw;
   height: 100vh;
-
   display: grid;
-  grid-template-columns: 30% 70%;
   grid-template-columns: 50% 50%;
-  grid-template-areas: "Auftritte Formular" " Auftritte Stats";
+  grid-template-rows: 50% 50%;
+  grid-template-areas: "Stats Formular" "Dashboard Dashboard";
 }
 
 .vip--auftritte {
@@ -15,12 +14,15 @@
   align-items: center;
   width: 100%;
   overflow: scroll;
+  grid-area: Stats;
 }
 
 .vip--formular {
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  grid-area: Formular;
 }
 
 .vip--form {
@@ -28,7 +30,11 @@
   flex-direction: column;
   align-items: center;
   width: 80%;
-  padding: 50px;
+  height: 100%;
+}
+
+.vip--dashboard {
+  grid-area: Dashboard;
 }
 
 input,
