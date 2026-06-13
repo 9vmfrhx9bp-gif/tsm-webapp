@@ -6,18 +6,21 @@ body {
 }
 
 .Container {
-  max-height: 100vh;
+  height: 100vh;
   overflow: hidden;
   display: grid;
   grid-template-rows: auto 1fr;
   grid-template-areas: "Navbar" "Main";
   margin: 0;
   padding: 0;
+
 }
 
 Navbar {
   grid-area: Navbar;
 }
+
 Routes {
   grid-area: Main;
+
 }

@@ -2,6 +2,7 @@ import React from "react";
 import ConfirmationCard from "./ConfirmationCard";
 import "./Dashboard.css";
 import { type ConfirmationDto } from "../types";
+import AreaChart from "./Chart";
 
 interface DashboardProps {
   confirmations: ConfirmationDto[];
@@ -11,6 +12,10 @@ function Dashboard({ confirmations }: DashboardProps) {
   const filteredConfirmations = confirmations.filter(
     (confirmation) => confirmation.status === false,
   );
+  const totalRevenue = confirmations.filter((confirmation) => confirmation.status === true).reduce((sum, confirmation) => sum + confirmation.preis, 0);
+
+
+
   return (
     <>
       <div className="dashboard">
@@ -23,10 +28,12 @@ function Dashboard({ confirmations }: DashboardProps) {
           ))}
         </div>
         <div className="dashboard--chart">
-          <h1>Chart</h1>
+          <AreaChart />
         </div>
         <div className="dashboard--cash">
-          <h1>Cash</h1>
+          <p className="dashboard--cash__total">Totaler Umsatz: {totalRevenue}€</p>
+
+
         </div>
       </div>
     </>

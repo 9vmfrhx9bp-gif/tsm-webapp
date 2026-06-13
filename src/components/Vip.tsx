@@ -66,42 +66,45 @@ export const Vip = ({
           })}
           className="vip--form"
         >
-          <input
+          <input className="text__input"
             {...register("title")}
             type="text"
             placeholder="Title"
             required
           />
-          <input
+          <input className="text__input"
             {...register("location")}
             type="text"
             placeholder="Location"
             required
           />
-          <input
+          <input className="text__input"
             {...register("date")}
             type="text"
             placeholder="Date"
             required
           />
-          <input
+          <input className="text__input"
             {...register("description")}
             type="text"
             placeholder="Description"
             required
           />
-          <input
+          <input className="text__input"
             {...register("preis")}
             type="number"
             placeholder="Preis pro Ticket"
             required
           />
-          <button type="submit">speichern</button>
+          <button type="submit" className="btn btn-primary">
+            speichern
+          </button>
         </form>
       </div>
       <div className="vip--dashboard">
         <Dashboard confirmations={confirmations} />
       </div>
+
     </div>
   );
 };

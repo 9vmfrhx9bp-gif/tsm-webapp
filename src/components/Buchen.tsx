@@ -47,9 +47,9 @@ function Buchen({ auftritte, safeConfirmation }: BuchenProps) {
     <div className="buchen__wrapper">
       <div className="buchen__form">
         <form onSubmit={handleSubmit(onSubmit)}>
-          <input type="text" placeholder="Nachname" {...register("nachname")} />
-          <input type="text" placeholder="Vorname" {...register("vorname")} />
-          <input type="email" placeholder="E-Mail" {...register("email")} />
+          <input className="text__input" type="text" placeholder="Nachname" {...register("nachname")} />
+          <input className="text__input" type="text" placeholder="Vorname" {...register("vorname")} />
+          <input className="text__input" type="email" placeholder="E-Mail" {...register("email")} />
           <select
             {...register("auftrittName")}
             onChange={(e) => setSelectedAuftritt(e.target.value)}
@@ -61,19 +61,20 @@ function Buchen({ auftritte, safeConfirmation }: BuchenProps) {
               </option>
             ))}
           </select>
-          <input type="text" placeholder="Straße" {...register("straße")} />
-          <input
+          <input className="text__input" type="text" placeholder="Straße" {...register("straße")} />
+          <input className="text__input"
             type="number"
             placeholder="Hausnummer"
             {...register("hausnummer")}
           />
-          <input
+          <input className="text__input"
             type="text"
             placeholder="Postleitzahl"
             {...register("postleitzahl")}
           />
-          <input type="text" placeholder="Stadt" {...register("stadt")} />
+          <input className="text__input" type="text" placeholder="Stadt" {...register("stadt")} />
           <input
+            className="text__input"
             type="number"
             placeholder="Menge"
             {...register("menge")}
@@ -81,7 +82,9 @@ function Buchen({ auftritte, safeConfirmation }: BuchenProps) {
           />
           <p>Preis: {preis}€</p>
 
-          <button type="submit">Buchen</button>
+          <button className="btn btn-primary" type="submit">
+            Buchen
+          </button>
         </form>
       </div>
     </div>

@@ -1,28 +1,33 @@
 .vip--container {
-  width: 100vw;
-  height: 100vh;
   display: grid;
-  grid-template-columns: 50% 50%;
-  grid-template-rows: 50% 50%;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 65% 35%;
   grid-template-areas: "Stats Formular" "Dashboard Dashboard";
+  min-height: 100%;
 }
 
 .vip--auftritte {
-  grid-area: Auftritte;
+  min-height: 100%;
+  grid-area: Stats;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
-  overflow: scroll;
-  grid-area: Stats;
+  overflow: auto;
 }
 
 .vip--formular {
-  height: 100%;
+  grid-area: Formular;
+
   display: flex;
   flex-direction: column;
   align-items: center;
-  grid-area: Formular;
+
+
+}
+
+.vip--dashboard {
+  grid-area: Dashboard;
+
 }
 
 .vip--form {
@@ -31,13 +36,12 @@
   align-items: center;
   width: 80%;
   height: 100%;
+
 }
 
-.vip--dashboard {
-  grid-area: Dashboard;
-}
 
-input,
+
+.text__input,
 select {
   margin: 10px;
   width: 80%;

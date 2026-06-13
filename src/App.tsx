@@ -40,6 +40,7 @@ function App() {
   }, []);
 
   const handleSafeData = (newAuftritt: Auftritt) => {
+
     if (edit.title === newAuftritt.title && edit.edit) {
       try {
         axios

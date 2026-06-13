@@ -1,8 +1,8 @@
 .confirmation--card {
-  border: solid 1px black;
+
   border-radius: 10px;
   display: grid;
-  grid-template-columns: 33% 33% 1fr;
+  grid-template-columns: 47% 2fr 1fr;
   grid-template-rows: 50% 50%;
   grid-template-areas: "menge geld checkbox" "email geld checkbox";
   height: 100px;
@@ -10,28 +10,35 @@
 }
 
 .confirmation--card__menge {
+  font-weight: bold;
   grid-area: menge;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
 .confirmation--card__email {
   grid-area: email;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.confirmation--card__geld {
+
+.confirmation--card__preis {
   grid-area: geld;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   align-items: center;
+  font-size: 1.2em;
+  font-weight: bold;
 }
+
 .confirmation--card__checkbox {
   grid-area: checkbox;
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 20px
 }
