@@ -80,11 +80,13 @@ function Buchen({ auftritte, safeConfirmation }: BuchenProps) {
             {...register("menge")}
             onChange={(e) => setMenge(Number(e.target.value))}
           />
-          <p>Preis: {preis}€</p>
+          <div className="buchen--commit">
+            <p className="buchen--preis">Preis: {preis}€</p>
 
-          <button className="btn btn-primary" type="submit">
-            Buchen
-          </button>
+            <button className="btn btn-primary" type="submit">
+              Bestellen
+            </button>
+          </div>
         </form>
       </div>
     </div>

@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import Buchen from "./components/Buchen";
 import "bootstrap/dist/css/bootstrap.css";
 
+
 import { Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Vip } from "./components/Vip";

@@ -12,4 +12,19 @@
   flex-direction: column;
   gap: 10px;
   width: 300px;
+
+}
+
+.buchen--commit {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+
+}
+
+.buchen--preis {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: bold;
 }

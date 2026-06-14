@@ -38,7 +38,7 @@ function Navbar() {
         <li>
           <NavLink to="/buchen" className={"navbar-link"}>
             {" "}
-            Buchen
+            Ticket bestellen
           </NavLink>
         </li>
         <li>

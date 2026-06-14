@@ -1,13 +1,13 @@
 .vip--container {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 65% 35%;
+  grid-template-rows: 50% 50%;
   grid-template-areas: "Stats Formular" "Dashboard Dashboard";
   min-height: 100%;
 }
 
 .vip--auftritte {
-  min-height: 100%;
+
   grid-area: Stats;
   display: flex;
   flex-direction: column;
@@ -35,7 +35,7 @@
   flex-direction: column;
   align-items: center;
   width: 80%;
-  height: 100%;
+
 
 }
 

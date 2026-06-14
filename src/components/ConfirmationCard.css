@@ -1,6 +1,6 @@
 .confirmation--card {
 
-  border-radius: 10px;
+  border: solid 1px rgb(207, 207, 207);
   display: grid;
   grid-template-columns: 47% 2fr 1fr;
   grid-template-rows: 50% 50%;

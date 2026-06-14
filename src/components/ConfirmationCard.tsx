@@ -5,6 +5,7 @@ import axios from "axios";
 
 interface ConfirmationCardProps {
   confirmation: ConfirmationDto;
+
 }
 
 function ConfirmationCard({ confirmation }: ConfirmationCardProps) {
