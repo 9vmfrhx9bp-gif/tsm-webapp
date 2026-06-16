@@ -31,13 +31,11 @@ function Buchen({ auftritte, safeConfirmation }: BuchenProps) {
   const onSubmit = (data: AddConfirmationRequest) => {
     data.preis = preis;
     try {
-      axios
-        .post("http://localhost:8080/confirmations", data)
-        .then((response) => {
-          safeConfirmation(response.data);
-          setPreis(0);
-          reset();
-        });
+      axios.post("http://server:8090/confirmations", data).then((response) => {
+        safeConfirmation(response.data);
+        setPreis(0);
+        reset();
+      });
     } catch (error) {
       console.error("Error posting confirmation:", error);
     }
@@ -47,9 +45,24 @@ function Buchen({ auftritte, safeConfirmation }: BuchenProps) {
     <div className="buchen__wrapper">
       <div className="buchen__form">
         <form onSubmit={handleSubmit(onSubmit)}>
-          <input className="text__input" type="text" placeholder="Nachname" {...register("nachname")} />
-          <input className="text__input" type="text" placeholder="Vorname" {...register("vorname")} />
-          <input className="text__input" type="email" placeholder="E-Mail" {...register("email")} />
+          <input
+            className="text__input"
+            type="text"
+            placeholder="Nachname"
+            {...register("nachname")}
+          />
+          <input
+            className="text__input"
+            type="text"
+            placeholder="Vorname"
+            {...register("vorname")}
+          />
+          <input
+            className="text__input"
+            type="email"
+            placeholder="E-Mail"
+            {...register("email")}
+          />
           <select
             {...register("auftrittName")}
             onChange={(e) => setSelectedAuftritt(e.target.value)}
@@ -61,18 +74,30 @@ function Buchen({ auftritte, safeConfirmation }: BuchenProps) {
               </option>
             ))}
           </select>
-          <input className="text__input" type="text" placeholder="Straße" {...register("straße")} />
-          <input className="text__input"
+          <input
+            className="text__input"
+            type="text"
+            placeholder="Straße"
+            {...register("straße")}
+          />
+          <input
+            className="text__input"
             type="number"
             placeholder="Hausnummer"
             {...register("hausnummer")}
           />
-          <input className="text__input"
+          <input
+            className="text__input"
             type="text"
             placeholder="Postleitzahl"
             {...register("postleitzahl")}
           />
-          <input className="text__input" type="text" placeholder="Stadt" {...register("stadt")} />
+          <input
+            className="text__input"
+            type="text"
+            placeholder="Stadt"
+            {...register("stadt")}
+          />
           <input
             className="text__input"
             type="number"

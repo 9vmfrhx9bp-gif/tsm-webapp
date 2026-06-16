@@ -5,20 +5,29 @@ import axios from "axios";
 
 interface ConfirmationCardProps {
   confirmation: ConfirmationDto;
-
+  onUpdate: (id: number) => void;
 }
 
-function ConfirmationCard({ confirmation }: ConfirmationCardProps) {
+function ConfirmationCard({ confirmation, onUpdate }: ConfirmationCardProps) {
   return (
     <div className="confirmation--card">
       <p className="confirmation--card__menge">Menge: {confirmation.menge} </p>
       <p className="confirmation--card__email"> {confirmation.email} </p>
-      <p className="confirmation--card__preis">Betrag: {confirmation.preis} € </p>
-      <input className="confirmation--card__checkbox" type="checkbox" onClick={() => {
-        try { axios.put(`http://localhost:8080/confirmations/${confirmation.id}`); window.location.reload(); } catch (error) {
-          console.error("Error confirming confirmation:", error);
-        }
-      }} />
+      <p className="confirmation--card__preis">
+        Betrag: {confirmation.preis} €{" "}
+      </p>
+      <input
+        className="confirmation--card__checkbox"
+        type="checkbox"
+        onClick={() => {
+          try {
+            axios.put(`http://server:8090/confirmations/${confirmation.id}`);
+          } catch (error) {
+            console.error("Error confirming confirmation:", error);
+          }
+          onUpdate(confirmation.id);
+        }}
+      />
     </div>
   );
 }

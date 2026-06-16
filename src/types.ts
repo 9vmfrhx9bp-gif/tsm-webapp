@@ -35,3 +35,8 @@ export interface ConfirmationDto {
   status: boolean;
   preis: number;
 }
+
+export interface LoginRequest {
+  username: string;
+  password: string;
+}

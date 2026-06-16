@@ -1,10 +1,11 @@
 import { useForm } from "react-hook-form";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import AuftrittCard from "./AuftrittCard";
 import Dashboard from "./Dashboard";
 import { DeleteButton, SettingsButton } from "./Buttons";
 import "./Vip.css";
 import { type Auftritt, type ConfirmationDto } from "../types";
+import LoginPage from "./LoginPage";
 
 interface VipProps {
   auftritte: Auftritt[];
@@ -31,80 +32,93 @@ export const Vip = ({
     reset(Default);
   }, [Default, reset]);
 
-  return (
-    <div className="vip--container">
-      <div className="vip--auftritte">
-        <table className="table table-striped-columns">
-          <thead>
-            <tr>
-              <th scope="col">Auftritte</th>
+  const [isAuthenticated, setAuthentication] = useState(false);
+  const authenticate = () => {
+    setAuthentication(true);
+  };
 
-              <th scope="col">Bearbeiten</th>
-            </tr>
-          </thead>
-          <tbody>
-            {auftritte.map((auftritt, index) => (
+  if (isAuthenticated == false) {
+    return <LoginPage authenticationFunction={authenticate} />;
+  } else {
+    return (
+      <div className="vip--container">
+        <div className="vip--auftritte">
+          <table className="table table-striped-columns">
+            <thead>
               <tr>
-                <td>
-                  <AuftrittCard auftritt={auftritt} key={auftritt.id} />
-                </td>
+                <th scope="col">Auftritte</th>
 
-                <td>
-                  <DeleteButton id={index} onDelete={onDelete} />
-                  <SettingsButton title={auftritt.title} onEdit={onEdit} />
-                </td>
+                <th scope="col">Bearbeiten</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-      <div className="vip--formular">
-        <form
-          onSubmit={handleSubmit((data) => {
-            safeData(data);
-            reset();
-          })}
-          className="vip--form"
-        >
-          <input className="text__input"
-            {...register("title")}
-            type="text"
-            placeholder="Title"
-            required
-          />
-          <input className="text__input"
-            {...register("location")}
-            type="text"
-            placeholder="Location"
-            required
-          />
-          <input className="text__input"
-            {...register("date")}
-            type="text"
-            placeholder="Date"
-            required
-          />
-          <input className="text__input"
-            {...register("description")}
-            type="text"
-            placeholder="Description"
-            required
-          />
-          <input className="text__input"
-            {...register("preis")}
-            type="number"
-            placeholder="Preis pro Ticket"
-            required
-          />
-          <button type="submit" className="btn btn-primary">
-            speichern
-          </button>
-        </form>
-      </div>
-      <div className="vip--dashboard">
-        <Dashboard confirmations={confirmations} />
-      </div>
+            </thead>
+            <tbody>
+              {auftritte.map((auftritt, index) => (
+                <tr>
+                  <td>
+                    <AuftrittCard auftritt={auftritt} key={auftritt.id} />
+                  </td>
 
-    </div>
-  );
+                  <td>
+                    <DeleteButton id={index} onDelete={onDelete} />
+                    <SettingsButton title={auftritt.title} onEdit={onEdit} />
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <div className="vip--formular">
+          <form
+            onSubmit={handleSubmit((data) => {
+              safeData(data);
+              reset();
+            })}
+            className="vip--form"
+          >
+            <input
+              className="text__input"
+              {...register("title")}
+              type="text"
+              placeholder="Title"
+              required
+            />
+            <input
+              className="text__input"
+              {...register("location")}
+              type="text"
+              placeholder="Location"
+              required
+            />
+            <input
+              className="text__input"
+              {...register("date")}
+              type="text"
+              placeholder="Date"
+              required
+            />
+            <input
+              className="text__input"
+              {...register("description")}
+              type="text"
+              placeholder="Description"
+              required
+            />
+            <input
+              className="text__input"
+              {...register("preis")}
+              type="number"
+              placeholder="Preis pro Ticket"
+              required
+            />
+            <button type="submit" className="btn btn-primary">
+              speichern
+            </button>
+          </form>
+        </div>
+        <div className="vip--dashboard">
+          <Dashboard confirmations={confirmations} />
+        </div>
+      </div>
+    );
+  }
 };

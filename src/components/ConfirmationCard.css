@@ -1,5 +1,4 @@
 .confirmation--card {
-
   border: solid 1px rgb(207, 207, 207);
   display: grid;
   grid-template-columns: 47% 2fr 1fr;
@@ -40,5 +39,5 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 20px
+  margin: 20px;
 }

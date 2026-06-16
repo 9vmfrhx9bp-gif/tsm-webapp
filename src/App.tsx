@@ -3,8 +3,7 @@ import Auftritte from "./components/Auftritte";
 import Navbar from "./components/Navbar";
 import Buchen from "./components/Buchen";
 import "bootstrap/dist/css/bootstrap.css";
-
-
+import About from "./components/About";
 import { Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Vip } from "./components/Vip";
@@ -28,24 +27,21 @@ function App() {
   const [confirmation, setConfirmation] = useState<ConfirmationDto[]>([]);
 
   useEffect(() => {
+    axios.get<Auftritt[]>("http://server:8090/auftritte").then((response) => {
+      setAuftritt(response.data);
+    });
     axios
-      .get<Auftritt[]>("http://localhost:8080/auftritte")
-      .then((response) => {
-        setAuftritt(response.data);
-      });
-    axios
-      .get<ConfirmationDto[]>("http://localhost:8080/confirmations")
+      .get<ConfirmationDto[]>("http://server:8090/confirmations")
       .then((response) => {
         setConfirmation(response.data);
       });
   }, []);
 
   const handleSafeData = (newAuftritt: Auftritt) => {
-
     if (edit.title === newAuftritt.title && edit.edit) {
       try {
         axios
-          .put("http://localhost:8080/auftritte", newAuftritt)
+          .put("http://server:8090/auftritte", newAuftritt)
           .then((response) => {
             newAuftritt.id = response.data.id;
           });
@@ -66,7 +62,7 @@ function App() {
 
     try {
       axios
-        .post("http://localhost:8080/auftritte", newAuftritt)
+        .post("http://server:8090/auftritte", newAuftritt)
         .then((request) => {
           setAuftritt([...auftritte, request.data]);
           console.log(request.data);
@@ -79,7 +75,7 @@ function App() {
   const deleteData = (index: number) => {
     const key = auftritte[index].id;
     try {
-      axios.delete("http://localhost:8080/auftritte/" + key);
+      axios.delete("http://server:8090/auftritte/" + key);
     } catch (error) {
       console.error("Error deleting data:", error);
     }
@@ -141,6 +137,7 @@ function App() {
             <Buchen auftritte={auftritte} safeConfirmation={safeConfirmation} />
           }
         />
+        <Route path="about" element={<About />} />
       </Routes>
     </div>
   );
