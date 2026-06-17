@@ -10,6 +10,9 @@ import { Vip } from "./components/Vip";
 import { type Auftritt, type Editable, type ConfirmationDto } from "./types";
 import Swal from "sweetalert2";
 import axios from "axios";
+import env from "./env.json"
+
+
 
 function App() {
   const Default: Auftritt = {
@@ -27,11 +30,11 @@ function App() {
   const [confirmation, setConfirmation] = useState<ConfirmationDto[]>([]);
 
   useEffect(() => {
-    axios.get<Auftritt[]>("http://server:8090/auftritte").then((response) => {
+    axios.get<Auftritt[]>(`http://${env.host}:8090/auftritte`).then((response) => {
       setAuftritt(response.data);
     });
     axios
-      .get<ConfirmationDto[]>("http://server:8090/confirmations")
+      .get<ConfirmationDto[]>(`http://${env.host}:8090/confirmations`)
       .then((response) => {
         setConfirmation(response.data);
       });
@@ -41,7 +44,7 @@ function App() {
     if (edit.title === newAuftritt.title && edit.edit) {
       try {
         axios
-          .put("http://server:8090/auftritte", newAuftritt)
+          .put(`http://${env.host}:8090/auftritte`, newAuftritt)
           .then((response) => {
             newAuftritt.id = response.data.id;
           });
@@ -62,7 +65,7 @@ function App() {
 
     try {
       axios
-        .post("http://server:8090/auftritte", newAuftritt)
+        .post(`http://${env.host}:8090/auftritte`, newAuftritt)
         .then((request) => {
           setAuftritt([...auftritte, request.data]);
           console.log(request.data);
@@ -75,7 +78,7 @@ function App() {
   const deleteData = (index: number) => {
     const key = auftritte[index].id;
     try {
-      axios.delete("http://server:8090/auftritte/" + key);
+      axios.delete(`http://${env.host}:8090/auftritte/` + key);
     } catch (error) {
       console.error("Error deleting data:", error);
     }

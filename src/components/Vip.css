@@ -1,7 +1,7 @@
 .vip--container {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 50% 50%;
+  grid-template-rows: 55% 45%;
   grid-template-areas: "Stats Formular" "Dashboard Dashboard";
   min-height: 100%;
 }
@@ -17,6 +17,8 @@
 
 .vip--formular {
   grid-area: Formular;
+  overflow: auto;
+  min-height: 100%;
 
   display: flex;
   flex-direction: column;
@@ -50,4 +52,12 @@ select {
   border-radius: 10px;
   border-style: none;
   box-shadow: 0 0 14px rgba(0, 0, 0, 0.152);
+}
+
+@media screen and (max-width:768px) {
+  .vip--container {
+    grid-template-columns: 100%;
+    grid-template-rows: 100%;
+    grid-template-areas: "Dashboard";
+  }
 }

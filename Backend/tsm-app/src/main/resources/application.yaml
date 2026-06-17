@@ -12,4 +12,13 @@ spring:
     database: postgresql
     show-sql: true
 server:
-  port: 8090
+  port: 443
+  ssl:
+    key-store: keystore.p12
+    key-store-password: ${keystore_password}
+    keyStoreType: PKCS12
+    keyAlias: tomcat
+
+deployment:
+  host: ${host}
+  port: ${port}

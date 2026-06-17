@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/login")
 @AllArgsConstructor
-@CrossOrigin(origins = "http://localhost:5173/")
+@CrossOrigin(origins = "http://${deployment.host}:${deployment.port}/")
 public class LoginController {
 
     private final CredentialsRepository credentialsRepository;

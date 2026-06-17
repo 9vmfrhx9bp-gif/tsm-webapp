@@ -1,4 +1,4 @@
-import React from "react";
+
 import "./Buchen.css";
 import { useForm } from "react-hook-form";
 import {
@@ -8,6 +8,7 @@ import {
 } from "../types";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import env from "../env.json"
 
 interface BuchenProps {
   auftritte: Auftritt[];
@@ -31,7 +32,7 @@ function Buchen({ auftritte, safeConfirmation }: BuchenProps) {
   const onSubmit = (data: AddConfirmationRequest) => {
     data.preis = preis;
     try {
-      axios.post("http://server:8090/confirmations", data).then((response) => {
+      axios.post(`http://${env.host}:8090/confirmations`, data).then((response) => {
         safeConfirmation(response.data);
         setPreis(0);
         reset();

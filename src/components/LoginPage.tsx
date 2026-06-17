@@ -1,19 +1,20 @@
-import React from "react";
+
 import "./LoginPage.css";
 import { useForm } from "react-hook-form";
 import { type LoginRequest } from "../types";
 import axios from "axios";
 import Swal from "sweetalert2";
+import env from "../env.json";
 
 interface PageProps {
   authenticationFunction: () => void;
 }
 
 function LoginPage({ authenticationFunction }: PageProps) {
-  const { register, handleSubmit, reset } = useForm<LoginRequest>();
+  const { register, handleSubmit } = useForm<LoginRequest>();
   const onSubmit = (data: LoginRequest) => {
     axios
-      .post("http://server:8090/login", data)
+      .post(`http://${env.host}:8090/login`, data)
       .then((response) => {
         if (response.status == 200) {
           authenticationFunction();

@@ -5,6 +5,8 @@ import { Chart as ChartJS } from "chart.js/auto";
 import { Bar } from "react-chartjs-2";
 import { useState } from "react";
 
+ChartJS.register();
+
 interface DashboardProps {
   confirmations: ConfirmationDto[];
 }
@@ -21,7 +23,9 @@ function Dashboard({ confirmations }: DashboardProps) {
     const newData = overviewData.filter((data) => data.id != id);
     setData(newData);
     const newChartData = confirmations.find((data) => data.id === id);
-    setChartData([...chartData, newChartData]);
+    if (newChartData !== undefined) {
+      setChartData([...chartData, newChartData]);
+    }
   };
 
   const totalRevenue = chartData.reduce(

@@ -1,7 +1,8 @@
-import React from "react";
+
 import { type ConfirmationDto } from "../types";
 import "./ConfirmationCard.css";
 import axios from "axios";
+import env from "../env.json"
 
 interface ConfirmationCardProps {
   confirmation: ConfirmationDto;
@@ -21,7 +22,7 @@ function ConfirmationCard({ confirmation, onUpdate }: ConfirmationCardProps) {
         type="checkbox"
         onClick={() => {
           try {
-            axios.put(`http://server:8090/confirmations/${confirmation.id}`);
+            axios.put(`http://${env.host}:8090/confirmations/${confirmation.id}`);
           } catch (error) {
             console.error("Error confirming confirmation:", error);
           }

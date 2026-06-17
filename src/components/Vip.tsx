@@ -7,6 +7,7 @@ import "./Vip.css";
 import { type Auftritt, type ConfirmationDto } from "../types";
 import LoginPage from "./LoginPage";
 
+
 interface VipProps {
   auftritte: Auftritt[];
   safeData: (data: Auftritt) => void;

@@ -16,7 +16,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/confirmations")
 @AllArgsConstructor
-@CrossOrigin(origins = "http://localhost:5173/")
+@CrossOrigin(origins = "http://${deployment.host}:${deployment.port}/")
 public class ConfirmationController {
 
     private final ConfirmationMapper confirmationMapper;
